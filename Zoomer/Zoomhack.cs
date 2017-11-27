@@ -25,7 +25,7 @@ namespace ZoomHack
     internal class Zoomhack
     {
 
-        // Yes Sir
+        
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
@@ -87,19 +87,13 @@ namespace ZoomHack
             ReadProcessMemory(processHandle, baseAddress, buffer, buffer.Length, ref bytesRead);
             Int32 baseValue = BitConverter.ToInt32(buffer, 0);
 
-            Int32 firstAddress = baseValue + 0x54;
-            ReadProcessMemory(processHandle, firstAddress, buffer, buffer.Length, ref bytesRead);
-            Int32 firstValue = BitConverter.ToInt32(buffer, 0);
-
-            Int32 secondAddress = firstValue + 0xC;
+            Int32 secondAddress = baseValue + 0xC;
             ReadProcessMemory(processHandle, secondAddress, buffer, buffer.Length, ref bytesRead);
             Int32 secondValue = BitConverter.ToInt32(buffer, 0);
 
             zoomAddy = secondValue + 0x238;
             ReadProcessMemory(processHandle, zoomAddy, floatBuffer, sizeof(float), ref bytesRead);
             float thirdValue = BitConverter.ToSingle(floatBuffer, 0);
-
-            
 
             Render.OnPresent += Render_OnPresent;
             Console.WriteLine("[PerfectionEnds] Zoomhack [Loaded]");
