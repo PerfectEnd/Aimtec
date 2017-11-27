@@ -25,7 +25,7 @@ namespace ZoomHack
     internal class Zoomhack
     {
 
-        
+        // Yes Sir
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
