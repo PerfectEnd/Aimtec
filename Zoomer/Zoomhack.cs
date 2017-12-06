@@ -45,7 +45,7 @@ namespace ZoomHack
 
         public static IntPtr BaseAddr = new IntPtr();
 
-        public static IntPtr b1g = new IntPtr(0x16D36A8);
+        public static IntPtr b1g = new IntPtr(0x16D1F70);
         Process p;
         Int32 processHandle;
 
@@ -87,11 +87,9 @@ namespace ZoomHack
             ReadProcessMemory(processHandle, baseAddress, buffer, buffer.Length, ref bytesRead);
             Int32 baseValue = BitConverter.ToInt32(buffer, 0);
 
-            Int32 secondAddress = baseValue + 0xC;
-            ReadProcessMemory(processHandle, secondAddress, buffer, buffer.Length, ref bytesRead);
-            Int32 secondValue = BitConverter.ToInt32(buffer, 0);
+           
 
-            zoomAddy = secondValue + 0x238;
+            zoomAddy = baseValue + 0x28;
             ReadProcessMemory(processHandle, zoomAddy, floatBuffer, sizeof(float), ref bytesRead);
             float thirdValue = BitConverter.ToSingle(floatBuffer, 0);
 
