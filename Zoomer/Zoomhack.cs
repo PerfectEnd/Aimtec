@@ -70,7 +70,7 @@ namespace ZoomHack
             var MainMenu = new Menu("main", "Main");
             {
                 MainMenu.Add(new MenuBool("enabled", "Enabled"));
-                MainMenu.Add(new MenuSlider("value", "Zoom Value", 2550, 1, 10000));
+                MainMenu.Add(new MenuSlider("value", "Max Zoom Value", 2550, 1, 10000));
             }
             Menu.Add(MainMenu);
 
