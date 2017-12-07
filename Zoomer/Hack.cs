@@ -1,10 +1,15 @@
-﻿using System.Net.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.Configuration;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security.Authentication.ExtendedProtection;
 using Aimtec.SDK.Events;
 
-namespace ZoomHack
+namespace Zoomhack2
 {
     using System;
     using System.Collections.Generic;
@@ -22,11 +27,8 @@ namespace ZoomHack
     using Aimtec.SDK.Util;
     using System.Diagnostics;
 
-    internal class Zoomhack
+    internal class Hack
     {
-
-        
-
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
 
@@ -40,6 +42,9 @@ namespace ZoomHack
         [DllImport("kernel32.dll")]
         public static extern IntPtr ReadProcessMemory(int hProcess, int lpBaseAddress,
                   [In, Out] byte[] buffer, int size, ref int lpNumberOfBytesRead);
+
+
+
 
         public static Menu Menu = new Menu("Zoomhack", "Zoomhack", true);
 
@@ -63,10 +68,10 @@ namespace ZoomHack
             Write(Handle, Address, Value);
         }
 
-        public Zoomhack()
+        public Hack()
         {
             p = Process.GetCurrentProcess();
-  
+
             var MainMenu = new Menu("main", "Main");
             {
                 MainMenu.Add(new MenuBool("enabled", "Enabled"));
@@ -76,7 +81,7 @@ namespace ZoomHack
 
             Menu.Attach();
 
-            BaseAddr = GetModuleHandle(null);        
+            BaseAddr = GetModuleHandle(null);
 
             Byte[] buffer = new Byte[4];
             Byte[] floatBuffer = new Byte[sizeof(float)];
@@ -87,7 +92,7 @@ namespace ZoomHack
             ReadProcessMemory(processHandle, baseAddress, buffer, buffer.Length, ref bytesRead);
             Int32 baseValue = BitConverter.ToInt32(buffer, 0);
 
-           
+
 
             zoomAddy = baseValue + 0x28;
             ReadProcessMemory(processHandle, zoomAddy, floatBuffer, sizeof(float), ref bytesRead);
@@ -95,6 +100,7 @@ namespace ZoomHack
 
             Render.OnPresent += Render_OnPresent;
             Console.WriteLine("[PerfectionEnds] Zoomhack [Loaded]");
+
         }
 
         private void Render_OnPresent()
@@ -103,11 +109,8 @@ namespace ZoomHack
             {
                 WriteFloat(processHandle, zoomAddy, Menu["main"]["value"].Value);
             }
-            
+
         }
+
     }
-
-}             
-
-
-
+}

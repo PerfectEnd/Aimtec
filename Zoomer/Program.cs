@@ -1,4 +1,10 @@
-﻿namespace ZoomHack
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Zoomhack2
 {
     using Aimtec;
     using Aimtec.SDK.Events;
@@ -12,7 +18,7 @@
 
         private static void GameEvents_GameStart()
         {
-            var Zoomhack = new Zoomhack();
+            var Hack = new Hack();
         }
     }
 }
