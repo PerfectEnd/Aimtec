@@ -45,7 +45,7 @@ namespace ZoomHack
 
         public static IntPtr BaseAddr = new IntPtr();
 
-        public static IntPtr b1g = new IntPtr(0x16D1F70);
+        public static IntPtr b1g = new IntPtr(0x2F7F3D8);
         Process p;
         Int32 processHandle;
 
