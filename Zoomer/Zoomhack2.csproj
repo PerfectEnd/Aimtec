@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aimtec">
-      <HintPath>..\..\..\..\..\AppData\Local\AimtecLoader\Data\System\Aimtec.dll</HintPath>
+      <HintPath>C:\Users\Seb\AppData\Local\AimtecLoader\Data\System\Aimtec.dll</HintPath>
     </Reference>
     <Reference Include="Aimtec.SDK">
-      <HintPath>..\..\..\..\..\AppData\Local\AimtecLoader\Data\System\Aimtec.SDK.dll</HintPath>
+      <HintPath>C:\Users\Seb\AppData\Local\AimtecLoader\Data\System\Aimtec.SDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,7 +45,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Users\Seb\AppData\Local\AimtecLoader\Data\System\System.Net.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>

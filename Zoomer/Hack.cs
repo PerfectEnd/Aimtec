@@ -45,7 +45,9 @@ namespace Zoomhack2
 
 
 
-
+ private static MyDelegate CallFunc;
+        [UnmanagedFunctionPointer(CallingConvention.ThisCall)] private delegate void MyDelegate(IntPtr thisptr, string text, int Type);
+		
         public static Menu Menu = new Menu("Zoomhack", "Zoomhack", true);
 
         public static IntPtr BaseAddr = new IntPtr();
@@ -82,6 +84,8 @@ namespace Zoomhack2
             Menu.Attach();
 
             BaseAddr = GetModuleHandle(null);
+			
+			var PrintChat = BaseAddr + 0x583950;
 
             Byte[] buffer = new Byte[4];
             Byte[] floatBuffer = new Byte[sizeof(float)];
@@ -100,7 +104,10 @@ namespace Zoomhack2
 
             Render.OnPresent += Render_OnPresent;
             Console.WriteLine("[PerfectionEnds] Zoomhack [Loaded]");
-
+			IntPtr ChatClient = BaseAddr + 0x2F90060;
+            CallFunc = (MyDelegate)Marshal.GetDelegateForFunctionPointer((IntPtr)PrintChat, typeof(MyDelegate));
+            CallFunc(ChatClient, "[Zoomhack] Loaded", 0);
+			CallFunc(ChatClient, "by PerfectionEnds", 5);
         }
 
         private void Render_OnPresent()
