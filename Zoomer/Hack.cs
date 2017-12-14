@@ -104,10 +104,10 @@ namespace Zoomhack2
 
             Render.OnPresent += Render_OnPresent;
             Console.WriteLine("[PerfectionEnds] Zoomhack [Loaded]");
-			IntPtr ChatClient = BaseAddr + 0x2F90060;
-            CallFunc = (MyDelegate)Marshal.GetDelegateForFunctionPointer((IntPtr)PrintChat, typeof(MyDelegate));
-            CallFunc(ChatClient, "[Zoomhack] Loaded", 0);
-			CallFunc(ChatClient, "by PerfectionEnds", 5);
+			//IntPtr ChatClient = BaseAddr + 0x2F90060;
+            //CallFunc = (MyDelegate)Marshal.GetDelegateForFunctionPointer((IntPtr)PrintChat, typeof(MyDelegate));
+            //CallFunc(ChatClient, "[Zoomhack] Loaded", 0);
+			//CallFunc(ChatClient, "by PerfectionEnds", 5);
         }
 
         private void Render_OnPresent()
